@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ibonus_app/ui/pages/splash/splash_page.dart';
 
 void main() {
   runApp(const MainApp());
