@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ibonus_app/ui/pages/auth/login_page.dart';
 import 'package:ibonus_app/ui/pages/auth/register_page.dart';
-import 'package:ibonus_app/ui/pages/widget/button.dart';
+import 'package:ibonus_app/ui/widget/button.dart';
+import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/utils/route.dart';
 
 class AuthPage extends StatelessWidget {
@@ -23,7 +24,7 @@ class AuthPage extends StatelessWidget {
           children: [
             Text(
               'Добро пожаловать в iBonus!',
-              style: TextStyle(color: Colors.white, fontSize: 34),
+              style: MTextStyle.title(),
             ),
             SizedBox(height: 12),
             Text(
