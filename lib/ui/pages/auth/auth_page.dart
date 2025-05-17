@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ibonus_app/ui/pages/auth/login_page.dart';
+import 'package:ibonus_app/ui/pages/auth/register_page.dart';
 import 'package:ibonus_app/ui/pages/widget/button.dart';
+import 'package:ibonus_app/utils/route.dart';
 
 class AuthPage extends StatelessWidget {
   @override
@@ -28,11 +31,21 @@ class AuthPage extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
             SizedBox(height: 12),
-            MButton(onTap: () {}, text: 'Войти'),
+            MButton(
+              onTap: () {
+                MRoute.push(context, LoginPage());
+              },
+              text: 'Войти',
+            ),
             SizedBox(height: 12),
-            MButton(onTap: () {}, text: 'Зарегистрироваться', full: false,),
+            MButton(
+              onTap: () {
+                MRoute.push(context, RegisterPage());
+              },
+              text: 'Зарегистрироваться',
+              full: false,
+            ),
             SizedBox(height: 30),
-
           ],
         ),
       ),

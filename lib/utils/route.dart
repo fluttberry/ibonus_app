@@ -9,6 +9,6 @@ class MRoute{
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>page));
   }
   static void pop (context, {data}){
-    Navigator.push(context, data);
+    Navigator.pop(context, data);
   }
 }
