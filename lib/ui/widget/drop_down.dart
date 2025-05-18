@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:ibonus_app/ui/utils/colors.dart';
 
 class MDropDown extends StatefulWidget {
   final String? hint;
@@ -22,11 +23,14 @@ class _MDropDownState extends State<MDropDown> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: DropdownButton(
+        dropdownColor: MColor.accent,
+        style: TextStyle(color: Colors.white),
+        isExpanded: true,
         value: value,
-        hint: Text(widget.hint ?? ''),
+        hint: Text(widget.hint ?? '', style: TextStyle(color: Colors.white),),
         items: [
-          DropdownMenuItem(value: 0, child: Text('Osh')),
-          DropdownMenuItem(value: 1, child: Text('Bishkek')),
+          DropdownMenuItem(value: 0, child: Text('Osh', )),
+          DropdownMenuItem(value: 1, child: Text('Bishkek',)),
           ],
         onChanged: (value) {
           setState(() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
+import 'package:ibonus_app/ui/widget/drop_down.dart';
 import 'package:ibonus_app/ui/widget/text_field.dart';
 import 'package:ibonus_app/utils/route.dart';
 
@@ -35,8 +36,8 @@ class RegisterPage extends StatelessWidget {
             MTextField(),
             SizedBox(height: 12),
             Text('Укажите город', style: TextStyle(color: Colors.white)),
-            MTextField(),
-            SizedBox(height: 12),
+            MDropDown(hint: 'city'),
+
           ],
         ),
       ),
