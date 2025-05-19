@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ibonus_app/bloc/auth/auth_bloc.dart';
+import 'package:ibonus_app/bloc/auth/auth_event.dart';
+import 'package:ibonus_app/bloc/auth/auth_state.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/ui/widget/button.dart';
 import 'package:ibonus_app/ui/widget/drop_down.dart';
@@ -6,8 +10,10 @@ import 'package:ibonus_app/ui/widget/text_field.dart';
 import 'package:ibonus_app/utils/route.dart';
 
 class RegisterPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    context.read<AuthBloc>().add(AuthEventGetCity());
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(20),
@@ -37,9 +43,17 @@ class RegisterPage extends StatelessWidget {
             MTextField(),
             SizedBox(height: 12),
             Text('Укажите город', style: TextStyle(color: Colors.white)),
-            MDropDown(hint: 'city'),
+            BlocBuilder<AuthBloc, AuthState>(
+            
+              builder: (context, state) {
+                if (state.cityModel == null){
+                  return CircularProgressIndicator();
+                }
+                return MDropDown(hint: 'city', cityModel: state.cityModel!,);
+              },
+            ),
             Spacer(),
-            MButton(onTap: (){}, text: 'Зарегистрироваться')
+            MButton(onTap: () {}, text: 'Зарегистрироваться'),
           ],
         ),
       ),
