@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:ibonus_app/model/city_model.dart';
 import 'package:ibonus_app/ui/utils/colors.dart';
@@ -7,7 +5,13 @@ import 'package:ibonus_app/ui/utils/colors.dart';
 class MDropDown extends StatefulWidget {
   final String? hint;
   final CityModel cityModel;
-  const MDropDown({super.key, this.hint, required this.cityModel});
+  final Function(int id) onSelect;
+  const MDropDown({
+    super.key,
+    this.hint,
+    required this.cityModel,
+    required this.onSelect,
+  });
   @override
   State<StatefulWidget> createState() {
     return _MDropDownState();
@@ -21,7 +25,6 @@ class _MDropDownState extends State<MDropDown> {
     return Container(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: BoxDecoration(
-        
         border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(10),
       ),
@@ -40,6 +43,9 @@ class _MDropDownState extends State<MDropDown> {
             setState(() {
               this.value = value;
             });
+            if (value != null) {
+              widget.onSelect(value);
+            }
           },
         ),
       ),

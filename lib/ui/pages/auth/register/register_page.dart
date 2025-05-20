@@ -10,7 +10,9 @@ import 'package:ibonus_app/ui/widget/text_field.dart';
 import 'package:ibonus_app/utils/route.dart';
 
 class RegisterPage extends StatelessWidget {
-
+  TextEditingController nameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  int? cityID;
   @override
   Widget build(BuildContext context) {
     context.read<AuthBloc>().add(AuthEventGetCity());
@@ -37,10 +39,10 @@ class RegisterPage extends StatelessWidget {
             Text('Добро пожаловать в iBonus!', style: MTextStyle.title()),
             SizedBox(height: 12),
             Text('Введите имя', style: TextStyle(color: Colors.white)),
-            MTextField(),
+            MTextField(controller: nameController,),
             SizedBox(height: 12),
             Text('Введите фамилию', style: TextStyle(color: Colors.white)),
-            MTextField(),
+            MTextField(controller: lastNameController,),
             SizedBox(height: 12),
             Text('Укажите город', style: TextStyle(color: Colors.white)),
             BlocBuilder<AuthBloc, AuthState>(
@@ -49,11 +51,17 @@ class RegisterPage extends StatelessWidget {
                 if (state.cityModel == null){
                   return CircularProgressIndicator();
                 }
-                return MDropDown(hint: 'city', cityModel: state.cityModel!,);
+                return MDropDown(hint: 'city', cityModel: state.cityModel!, onSelect: (id) {
+                  cityID = id;
+                },);
               },
             ),
             Spacer(),
-            MButton(onTap: () {}, text: 'Зарегистрироваться'),
+            MButton(onTap: () {
+              if (nameController.text.isNotEmpty && lastNameController.text.isNotEmpty && cityID!=null){
+                MRoute.push(context, page);
+              }
+            }, text: 'Зарегистрироваться'),
           ],
         ),
       ),

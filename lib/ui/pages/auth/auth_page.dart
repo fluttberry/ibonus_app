@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ibonus_app/ui/pages/auth/login_page.dart';
-import 'package:ibonus_app/ui/pages/auth/register_page.dart';
+import 'package:ibonus_app/ui/pages/auth/register/register_page.dart';
 import 'package:ibonus_app/ui/widget/button.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/utils/route.dart';
