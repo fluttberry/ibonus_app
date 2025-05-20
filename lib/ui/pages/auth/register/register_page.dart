@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ibonus_app/bloc/auth/auth_bloc.dart';
 import 'package:ibonus_app/bloc/auth/auth_event.dart';
 import 'package:ibonus_app/bloc/auth/auth_state.dart';
+import 'package:ibonus_app/model/user_register_model.dart';
+import 'package:ibonus_app/ui/pages/auth/register/phone_register_page.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/ui/widget/button.dart';
 import 'package:ibonus_app/ui/widget/drop_down.dart';
@@ -59,7 +61,7 @@ class RegisterPage extends StatelessWidget {
             Spacer(),
             MButton(onTap: () {
               if (nameController.text.isNotEmpty && lastNameController.text.isNotEmpty && cityID!=null){
-                MRoute.push(context, page);
+                MRoute.push(context, PhoneRegisterPage(userRegisterModel: UserRegisterModel(phone: '', name: nameController.text, lastName: lastNameController.text, cityId: cityID!),));
               }
             }, text: 'Зарегистрироваться'),
           ],

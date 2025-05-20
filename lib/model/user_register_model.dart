@@ -5,20 +5,20 @@ class UserRegisterModel {
   String phone;
   String name;
   String lastName;
-  int id;
+  int cityId;
   UserRegisterModel({
     required this.phone,
     required this.name,
     required this.lastName,
-    required this.id,
+    required this.cityId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'phone': phone,
-      'name': name,
-      'lastName': lastName,
-      'id': id,
+      'first_name': name,
+      'last_name': lastName,
+      'id': cityId,
     };
   }
 
