@@ -20,6 +20,8 @@ class MButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.transparent,
+      overlayColor: WidgetStatePropertyAll(Colors.transparent),
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,

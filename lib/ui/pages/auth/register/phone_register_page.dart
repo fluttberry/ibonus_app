@@ -37,11 +37,12 @@ class PhoneRegisterPage extends StatelessWidget {
             ),
             SizedBox(height: 24),
             Text('Верификация', style: MTextStyle.title()),
-            SizedBox(height: 12),
+            SizedBox(height: 50),
             Text(
               'Введите номер телефона',
               style: TextStyle(color: Colors.white),
             ),
+            SizedBox(height: 12),
             MTextField(
               controller: phoneController,
               textInputType: TextInputType.phone,
@@ -52,11 +53,37 @@ class PhoneRegisterPage extends StatelessWidget {
               onTap: () {
                 if (phoneController.text.isNotEmpty) {
                   userRegisterModel.phone = phoneController.text;
-                  context.read<AuthBloc>().add(AuthEventRegister(userRegisterModel: userRegisterModel));
+                  context.read<AuthBloc>().add(
+                    AuthEventRegister(userRegisterModel: userRegisterModel),
+                  );
                 }
               },
               text: 'Продолжить',
             ),
+            Spacer(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                'Если вы зарегистрируетесь, применяются',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                'Политика конфиденциальности.',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(height: 40),
           ],
         ),
       ),

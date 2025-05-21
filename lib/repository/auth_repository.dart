@@ -18,6 +18,19 @@ class AuthRepository {
     var response = await http.post(
       Uri.parse('https://back.ibonus.app/api/v1/accounts/register/'),
       body: user.toJson(),
+      headers: {'Content-type' : 'application/json'}
+    );
+    return response.statusCode == 201;
+  }
+
+  Future<bool> verify(String pass1, String pass2, String code) async {
+    var response = await http.post(
+      Uri.parse('https://back.ibonus.app/api/v1/accounts/send/verify-code/$code'),
+      body: {
+        'password':pass1,
+        'password_confirm':pass2,
+      },
+      headers: {'Content-type' : 'application/json'}
     );
     return response.statusCode == 201;
   }
