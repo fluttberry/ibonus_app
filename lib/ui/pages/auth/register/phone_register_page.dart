@@ -13,7 +13,7 @@ import 'package:ibonus_app/utils/route.dart';
 class PhoneRegisterPage extends StatelessWidget {
   final UserRegisterModel userRegisterModel;
   PhoneRegisterPage({super.key, required this.userRegisterModel});
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController phoneController = TextEditingController(text: '+996');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
