@@ -42,12 +42,15 @@ class RegisterPage extends StatelessWidget {
             Text('Добро пожаловать в iBonus!', style: MTextStyle.title()),
             SizedBox(height: 12),
             Text('Введите имя', style: TextStyle(color: Colors.white)),
+            SizedBox(height: 8),
             MTextField(controller: nameController),
             SizedBox(height: 12),
             Text('Введите фамилию', style: TextStyle(color: Colors.white)),
+            SizedBox(height: 8),
             MTextField(controller: lastNameController),
             SizedBox(height: 12),
             Text('Укажите город', style: TextStyle(color: Colors.white)),
+            SizedBox(height: 8),
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
                 if (state.cityModel == null) {
@@ -114,7 +117,7 @@ class RegisterPage extends StatelessWidget {
                   width: 80,
                 
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 54, 43, 70),
+                    color: Color(0xff8c63ee,).withAlpha(10),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: InkWell(
