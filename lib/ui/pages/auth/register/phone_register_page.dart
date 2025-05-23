@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ibonus_app/bloc/auth/auth_bloc.dart';
 import 'package:ibonus_app/bloc/auth/auth_event.dart';
 import 'package:ibonus_app/model/user_register_model.dart';
+import 'package:ibonus_app/ui/pages/auth/register/code_entry_page.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/ui/widget/button.dart';
 import 'package:ibonus_app/ui/widget/text_field.dart';
@@ -54,7 +55,9 @@ class PhoneRegisterPage extends StatelessWidget {
                   userRegisterModel.phone = phoneController.text;
                   context.read<AuthBloc>().add(
                     AuthEventRegister(userRegisterModel: userRegisterModel),
+                    
                   );
+                  MRoute.push(context, CodeEntryPage());
                 }
               },
               text: 'Продолжить',

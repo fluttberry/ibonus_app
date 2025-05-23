@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:ibonus_app/ui/pages/auth/register/password_enrty_page.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/ui/widget/button.dart';
 import 'package:ibonus_app/utils/route.dart';
 import 'package:pinput/pinput.dart';
 
 class CodeEntryPage extends StatelessWidget {
+  CodeEntryPage({super.key});
+
+  final defaultPinTheme = PinTheme;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +35,34 @@ class CodeEntryPage extends StatelessWidget {
             Text('Введите код', style: MTextStyle.title()),
             SizedBox(height: 50),
             Text(
-              'Мы отправили код на номер /n 996700600600 через WhatsApp',
+              'Мы отправили код на номер\n996700600600 через WhatsApp',
               style: TextStyle(color: Colors.white),
             ),
             SizedBox(height: 12),
-            Pinput(length: 6),
+            Align(
+              alignment: Alignment.center,
+              child: Pinput(
+                length: 6,
+                defaultPinTheme: PinTheme(
+                  width: 40,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.transparent,
+                  ),
+                  textStyle: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
             Spacer(),
-            MButton(onTap: () {}, text: 'Продолжить'),
+            MButton(onTap: () {
+              MRoute.push(context, PasswordEnrtyPage());
+            }, text: 'Продолжить'),
             Spacer(),
           ],
         ),
