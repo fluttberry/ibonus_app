@@ -6,7 +6,7 @@ import 'package:ibonus_app/utils/route.dart';
 import 'package:pinput/pinput.dart';
 
 class CodeEntryPage extends StatelessWidget {
-  CodeEntryPage({super.key});
+  const CodeEntryPage({super.key});
 
   final defaultPinTheme = PinTheme;
 

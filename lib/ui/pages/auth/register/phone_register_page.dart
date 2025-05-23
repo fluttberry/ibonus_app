@@ -13,7 +13,7 @@ import 'package:ibonus_app/utils/route.dart';
 class PhoneRegisterPage extends StatelessWidget {
   final UserRegisterModel userRegisterModel;
   PhoneRegisterPage({super.key, required this.userRegisterModel});
-  TextEditingController phoneController = TextEditingController(text: '+996');
+  TextEditingController _phoneController = TextEditingController(text: '+996');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,15 +44,15 @@ class PhoneRegisterPage extends StatelessWidget {
             ),
             SizedBox(height: 12),
             MTextField(
-              controller: phoneController,
+              controller: _phoneController,
               textInputType: TextInputType.phone,
             ),
 
             Spacer(),
             MButton(
               onTap: () {
-                if (phoneController.text.isNotEmpty) {
-                  userRegisterModel.phone = phoneController.text;
+                if (_phoneController.text.isNotEmpty) {
+                  userRegisterModel.phone = _phoneController.text;
                   context.read<AuthBloc>().add(
                     AuthEventRegister(userRegisterModel: userRegisterModel),
                     
