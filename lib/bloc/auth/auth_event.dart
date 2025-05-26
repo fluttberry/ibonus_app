@@ -10,3 +10,17 @@ class AuthEventRegister extends AuthEvent {
     required this.userRegisterModel,
   });
 } 
+
+class AuthEventRegisterPassword extends AuthEvent {
+  String password;
+  String passwordConfirm;
+  String sms;
+   
+  AuthEventRegisterPassword({
+    required this.password,
+    required this.passwordConfirm,
+    required this.sms ,
+
+
+  });
+}

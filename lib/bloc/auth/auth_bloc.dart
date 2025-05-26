@@ -7,9 +7,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthState()) {
     on<AuthEventGetCity>(_getCity);
     on<AuthEventRegister>(_register);
+    on<AuthEventRegisterPassword>(_registerPassword);
   }
 
   AuthRepository authRepository = AuthRepository();
+
+  _registerPassword(AuthEventRegisterPassword event, emit) async {
+    emit(state.copyWith(loading: true));
+    bool success = await authRepository.registerPassword(
+      event.password,
+      event.passwordConfirm,
+      event.sms,
+    );
+    emit(state.copyWith(success: success, loading: false));
+  }
+
   _getCity(AuthEventGetCity event, emit) async {
     var cities = await authRepository.getCities();
     emit(AuthState(cityModel: cities));
@@ -19,6 +31,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(state.copyWith(loading: true));
     bool success = await authRepository.register(event.userRegisterModel);
     emit(state.copyWith(success: success, loading: false));
-    
   }
 }

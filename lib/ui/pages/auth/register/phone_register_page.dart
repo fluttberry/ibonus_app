@@ -14,7 +14,7 @@ import 'package:ibonus_app/utils/route.dart';
 class PhoneRegisterPage extends StatelessWidget {
   final UserRegisterModel userRegisterModel;
   PhoneRegisterPage({super.key, required this.userRegisterModel});
-  TextEditingController _phoneController = TextEditingController(text: '+996');
+ final TextEditingController _phoneController = TextEditingController(text: '+996');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +52,7 @@ class PhoneRegisterPage extends StatelessWidget {
             Spacer(),
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
+               
                 if (state.loading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state.success) {

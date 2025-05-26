@@ -1,20 +1,23 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ibonus_app/bloc/auth/auth_bloc.dart';
+import 'package:ibonus_app/bloc/auth/auth_event.dart';
+import 'package:ibonus_app/bloc/auth/auth_state.dart';
+
 import 'package:ibonus_app/ui/pages/auth/login_page.dart';
-import 'package:ibonus_app/ui/pages/auth/register/code_entry_page.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/ui/widget/button.dart';
 import 'package:ibonus_app/ui/widget/text_field.dart';
 import 'package:ibonus_app/utils/route.dart';
 
-class PasswordEnrtyPage extends StatefulWidget {
-  const PasswordEnrtyPage({super.key});
+class PasswordEnrtyPage extends StatelessWidget {
+  final String sms;
+  PasswordEnrtyPage({super.key, required this.sms});
 
-  @override
-  State<PasswordEnrtyPage> createState() => _PasswordEnrtyPageState();
-}
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController password2Controller = TextEditingController();
 
-class _PasswordEnrtyPageState extends State<PasswordEnrtyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,17 +44,41 @@ class _PasswordEnrtyPageState extends State<PasswordEnrtyPage> {
             SizedBox(height: 50),
             Text('Введите пароль', style: TextStyle(color: Colors.white)),
             SizedBox(height: 12),
-            MTextField(),
+            MTextField(
+              controller: passwordController,
+              textInputType: TextInputType.phone,
+            ),
             SizedBox(height: 24),
             Text('Повторите пароль', style: TextStyle(color: Colors.white)),
             SizedBox(height: 12),
-            MTextField(),
+            MTextField(
+              controller: password2Controller,
+              textInputType: TextInputType.phone,
+            ),
             Spacer(),
-            MButton(
-              onTap: () {
-                MRoute.push(context, LoginPage);
-              },
-              text: 'Продолжить',
+            BlocBuilder<AuthBloc,  AuthState>( 
+              builder: (context, state) {
+                 if (state.loading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state.success) {
+                  MRoute.push(
+                    context,
+                    LoginPage(),
+                  );
+                }
+                return MButton(
+                  onTap: () {
+                    context.read<AuthBloc>().add(
+                      AuthEventRegisterPassword(
+                        password: passwordController.text,
+                        passwordConfirm: password2Controller.text,
+                        sms: sms,
+                      ),
+                    );
+                  },
+                  text: 'Продолжить',
+                );
+              }
             ),
             Spacer(),
             Align(

@@ -1,18 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:ibonus_app/ui/pages/auth/register/password_enrty_page.dart';
 import 'package:pinput/pinput.dart';
 
-import 'package:ibonus_app/ui/pages/auth/register/password_enrty_page.dart';
+
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/ui/widget/button.dart';
 import 'package:ibonus_app/utils/route.dart';
 
 class CodeEntryPage extends StatelessWidget {
-  const CodeEntryPage({
+CodeEntryPage({
     super.key,
     required this.phone,
   });
   final String phone;
+  TextEditingController smsContoller = TextEditingController();
   final defaultPinTheme = PinTheme;
 
   @override
@@ -40,7 +42,11 @@ class CodeEntryPage extends StatelessWidget {
             Text('Введите код', style: MTextStyle.title()),
             SizedBox(height: 50),
             Text(
-              'Мы отправили код на номер\n996700600600 через WhatsApp',
+              'Мы отправили код на номер',
+              style: TextStyle(color: Colors.white),
+            ),
+            Text(
+              '$phone через WhatsApp',
               style: TextStyle(color: Colors.white),
             ),
             SizedBox(height: 12),
@@ -48,6 +54,7 @@ class CodeEntryPage extends StatelessWidget {
               alignment: Alignment.center,
               child: Pinput(
                 length: 6,
+                controller: smsContoller,
                 defaultPinTheme: PinTheme(
                   width: 40,
                   height: 44,
@@ -66,7 +73,7 @@ class CodeEntryPage extends StatelessWidget {
             ),
             Spacer(),
             MButton(onTap: () {
-              
+              MRoute.push(context, PasswordEnrtyPage(sms: smsContoller.text));
             }, text: 'Продолжить'),
             Spacer(),
           ],
