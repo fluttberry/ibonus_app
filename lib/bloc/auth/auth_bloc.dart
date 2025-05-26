@@ -15,8 +15,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthState(cityModel: cities));
   }
 
-  _register(AuthEventRegister event, emit){
-    authRepository.register(event.userRegisterModel);
-
+  _register(AuthEventRegister event, emit) async {
+    emit(state.copyWith(loading: true));
+    bool success = await authRepository.register(event.userRegisterModel);
+    emit(state.copyWith(success: success, loading: false));
+    
   }
 }

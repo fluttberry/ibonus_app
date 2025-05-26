@@ -1,13 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
+
 import 'package:ibonus_app/ui/pages/auth/register/password_enrty_page.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/ui/widget/button.dart';
 import 'package:ibonus_app/utils/route.dart';
-import 'package:pinput/pinput.dart';
 
 class CodeEntryPage extends StatelessWidget {
-  const CodeEntryPage({super.key});
-
+  const CodeEntryPage({
+    super.key,
+    required this.phone,
+  });
+  final String phone;
   final defaultPinTheme = PinTheme;
 
   @override
@@ -61,7 +66,7 @@ class CodeEntryPage extends StatelessWidget {
             ),
             Spacer(),
             MButton(onTap: () {
-              MRoute.push(context, PasswordEnrtyPage());
+              
             }, text: 'Продолжить'),
             Spacer(),
           ],
