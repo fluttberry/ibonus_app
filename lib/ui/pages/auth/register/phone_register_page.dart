@@ -14,7 +14,7 @@ import 'package:ibonus_app/utils/route.dart';
 class PhoneRegisterPage extends StatelessWidget {
   final UserRegisterModel userRegisterModel;
   PhoneRegisterPage({super.key, required this.userRegisterModel});
- final TextEditingController _phoneController = TextEditingController(text: '+996');
+ final TextEditingController phoneController = TextEditingController(text: '+996');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +45,7 @@ class PhoneRegisterPage extends StatelessWidget {
             ),
             SizedBox(height: 12),
             MTextField(
-              controller: _phoneController,
+              controller: phoneController,
               textInputType: TextInputType.phone,
             ),
 
@@ -56,15 +56,18 @@ class PhoneRegisterPage extends StatelessWidget {
                 if (state.loading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state.success) {
-                  MRoute.push(
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    MRoute.push(
                     context,
-                    CodeEntryPage(phone: _phoneController.text),
+                    CodeEntryPage(phone: phoneController.text),
                   );
+                  });
+                  context.read<AuthBloc>().state.success = false;
                 }
                 return MButton(
                   onTap: () {
-                    if (_phoneController.text.isNotEmpty) {
-                      userRegisterModel.phone = _phoneController.text;
+                    if (phoneController.text.isNotEmpty) {
+                      userRegisterModel.phone = phoneController.text;
                       context.read<AuthBloc>().add(
                         AuthEventRegister(userRegisterModel: userRegisterModel),
                       );

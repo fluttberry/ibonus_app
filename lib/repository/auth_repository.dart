@@ -6,36 +6,36 @@ import 'package:ibonus_app/model/user_register_model.dart';
 
 class AuthRepository {
   Future<CityModel?> getCities() async {
-    var response = await http.get(
+    http.Response response = await http.get(
       Uri.parse('https://back.ibonus.app/api/v1/geo/cities/'),
     );
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 200) {
       return CityModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
     }
   }
 
   Future<bool> register(UserRegisterModel user) async {
-    var response = await http.post(
+    http.Response response = await http.post(
       Uri.parse('https://back.ibonus.app/api/v1/accounts/register/'),
       body: user.toJson(),
       headers: {'Content-type': 'application/json'},
     );
-    return response.statusCode == 201;
+    return response.statusCode == 201 || response.statusCode == 200;
   }
 Future<bool> registerPassword(String password, String passwordConfirm, String sms) async {
-    var response = await http.post(
+    http.Response response = await http.post(
       Uri.parse('https://back.ibonus.app/api/v1/accounts/send/verify-code/$sms'),
-      body: {
+      body: jsonEncode ({
         'password': password,
         'password_confirm': passwordConfirm,
-      },
+      }),
       headers: {'Content-type': 'application/json'},
     );
-    return response.statusCode == 201;
+    return response.statusCode == 201 || response.statusCode == 200;
   }
 
   Future<bool> verify(String pass1, String pass2, String code) async {
-    var response = await http.post(
+    http.Response response = await http.post(
       Uri.parse(
         'https://back.ibonus.app/api/v1/accounts/send/verify-code/$code',
       ),
