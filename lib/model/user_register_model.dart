@@ -18,7 +18,7 @@ class UserRegisterModel {
       'phone': phone,
       'first_name': name,
       'last_name': lastName,
-      'id': cityId,
+      'city': cityId,
     };
   }
 
