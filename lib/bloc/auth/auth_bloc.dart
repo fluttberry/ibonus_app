@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ibonus_app/bloc/auth/auth_event.dart';
 import 'package:ibonus_app/bloc/auth/auth_state.dart';
+import 'package:ibonus_app/data/shared_pref.dart';
 import 'package:ibonus_app/repository/auth_repository.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -14,12 +15,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   _registerPassword(AuthEventRegisterPassword event, emit) async {
     emit(state.copyWith(loading: true));
-    bool success = await authRepository.registerPassword(
-      event.password,
-      event.passwordConfirm,
-      event.sms,
-    );
-    emit(state.copyWith(success: success, loading: false));
+    // bool success = await authRepository.registerPassword(
+    //   event.password,
+    //   event.passwordConfirm,
+    //   event.sms,
+    // );
+    // if (state.success){
+    //   SharedPref.saveToken();
+    // }
+    // print('---bloc${success}');
+    emit(state.copyWith(successPassword: success, loading: false));
   }
 
   _getCity(AuthEventGetCity event, emit) async {

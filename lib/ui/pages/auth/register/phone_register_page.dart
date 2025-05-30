@@ -72,10 +72,10 @@ class PhoneRegisterPage extends StatelessWidget {
                         AuthEventRegister(userRegisterModel: userRegisterModel),
                       );
                     }
-                    MRoute.push(
-                    context,
-                    CodeEntryPage(phone: phoneController.text),
-                  );                   
+                  //   MRoute.push(
+                  //   context,
+                  //   CodeEntryPage(phone: phoneController.text),
+                  // );                   
                   },
                   text: 'Продолжить',
                 );

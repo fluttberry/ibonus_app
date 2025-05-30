@@ -59,13 +59,19 @@ class PasswordEnrtyPage extends StatelessWidget {
             Spacer(),
             BlocBuilder<AuthBloc,  AuthState>( 
               builder: (context, state) {
+                  print('----${state.loading}');
+                  print('----s${state.success}');
+                  print('----s2${state.successPassword}');
                  if (state.loading) {
                   return Center(child: CircularProgressIndicator());
-                } else if (state.success) {
-                  MRoute.push(
+                } else if (state.successPassword) {
+                  print('----${state.successPassword}');
+                   WidgetsBinding.instance.addPostFrameCallback((_) {
+                  MRoute.replace(
                     context,
                     HomePage(),
                   );
+                   });
                 }
                 return MButton(
                   onTap: () {

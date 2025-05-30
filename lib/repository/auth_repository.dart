@@ -15,11 +15,13 @@ class AuthRepository {
   }
 
   Future<bool> register(UserRegisterModel user) async {
+
     http.Response response = await http.post(
       Uri.parse('https://back.ibonus.app/api/v1/accounts/register/'),
       body: user.toJson(),
       headers: {'Content-type': 'application/json'},
     );
+    print('----${response.body}');
     return response.statusCode == 201 || response.statusCode == 200;
   }
 Future<bool> registerPassword(String password, String passwordConfirm, String sms) async {
@@ -31,6 +33,8 @@ Future<bool> registerPassword(String password, String passwordConfirm, String sm
       }),
       headers: {'Content-type': 'application/json'},
     );
+    print('----${response.body}');
+    print('----${response.statusCode}');
     return response.statusCode == 201 || response.statusCode == 200;
   }
 

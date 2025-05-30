@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ibonus_app/bloc/auth/auth_bloc.dart';
+import 'package:ibonus_app/bloc/store/store_bloc.dart';
 import 'package:ibonus_app/ui/pages/splash/splash_page.dart';
 
 void main() {
-  runApp(MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => AuthBloc(), child: Container()),
-        ],
-        child:  MainApp()));
+  runApp (MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -16,8 +13,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MultiBlocProvider(providers: [
+          BlocProvider(create: (context) => AuthBloc()),
+          BlocProvider(create: (context) => StoreBloc()),
+        ], child: MaterialApp(
       home: SplashPage()
-    );
+    )); 
   }
 }

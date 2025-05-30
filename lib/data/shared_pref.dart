@@ -10,4 +10,8 @@ class SharedPref {
   static String getToken (){
    return _pref.getString('token')??'';
   }
+
+  static void saveToken (String token){
+    _pref.setString('token', token);
+  }
 } 
