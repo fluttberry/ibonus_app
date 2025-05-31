@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ibonus_app/data/shared_pref.dart';
 import 'package:ibonus_app/ui/pages/auth/auth_page.dart';
+import 'package:ibonus_app/ui/pages/home/home_page.dart';
 import 'package:ibonus_app/utils/route.dart';
 
 class SplashPage extends StatelessWidget {
@@ -17,7 +18,7 @@ class SplashPage extends StatelessWidget {
     if (SharedPref.getToken().isEmpty) {
       MRoute.replace(context, AuthPage());
     } else {
-      // MRoute.replace(context, HomePage());
+       MRoute.replace(context, HomePage());
     }
   }
 }

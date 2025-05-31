@@ -14,16 +14,21 @@ class StorePage extends StatelessWidget {
           builder: (context, state) {
             if (state.storeModel != null) {
               return GridView.builder(
+                itemCount: state.storeModel?.results?.length ?? 0,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (context, index) {
-                  return Text(state.storeModel!.results![index].name??'-');
-                  
+                  return Column(
+                    children: [
+                      Text(state.storeModel!.results![index].name ?? '-'),
+                      Text(state.storeModel!.results![index].address ?? '-'),
+                    ],
+                  );
                 },
               );
-              
-            } return Center(child: CircularProgressIndicator(),);
+            }
+            return Center(child: CircularProgressIndicator());
           },
         );
       },

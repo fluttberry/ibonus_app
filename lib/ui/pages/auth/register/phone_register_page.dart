@@ -56,12 +56,12 @@ class PhoneRegisterPage extends StatelessWidget {
                 if (state.loading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state.success) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                  
                     MRoute.push(
                     context,
                     CodeEntryPage(phone: phoneController.text),
                   );
-                  });
+                  
                   context.read<AuthBloc>().state.success = false;
                 }
                 return MButton(
