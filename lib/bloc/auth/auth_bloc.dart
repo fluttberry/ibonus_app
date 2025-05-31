@@ -20,9 +20,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       event.passwordConfirm,
       event.sms,
     );
-    // if (state.success){
-    //   SharedPref.saveToken();
-    // }
     // print('---bloc${success}');
     emit(state.copyWith(successPassword: success, loading: false));
   }
