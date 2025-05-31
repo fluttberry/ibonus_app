@@ -15,11 +15,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   _registerPassword(AuthEventRegisterPassword event, emit) async {
     emit(state.copyWith(loading: true));
-    // bool success = await authRepository.registerPassword(
-    //   event.password,
-    //   event.passwordConfirm,
-    //   event.sms,
-    // );
+    bool success = await authRepository.registerPassword(
+      event.password,
+      event.passwordConfirm,
+      event.sms,
+    );
     // if (state.success){
     //   SharedPref.saveToken();
     // }

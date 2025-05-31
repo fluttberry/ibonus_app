@@ -4,8 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ibonus_app/bloc/auth/auth_bloc.dart';
 import 'package:ibonus_app/bloc/auth/auth_event.dart';
 import 'package:ibonus_app/bloc/auth/auth_state.dart';
-
-import 'package:ibonus_app/ui/pages/auth/login_page.dart';
 import 'package:ibonus_app/ui/pages/home/home_page.dart';
 import 'package:ibonus_app/ui/utils/style.dart';
 import 'package:ibonus_app/ui/widget/button.dart';

@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:ibonus_app/data/shared_pref.dart';
 import 'package:ibonus_app/model/city_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:ibonus_app/model/user_register_model.dart';
@@ -33,9 +33,14 @@ Future<bool> registerPassword(String password, String passwordConfirm, String sm
       }),
       headers: {'Content-type': 'application/json'},
     );
+    if (response.statusCode == 201 || response.statusCode == 200){
+    var token = jsonDecode(response.body)['token'];
+    SharedPref.saveToken(token);
+    return true;
+    }
     print('----${response.body}');
     print('----${response.statusCode}');
-    return response.statusCode == 201 || response.statusCode == 200;
+    return false;
   }
 
   Future<bool> verify(String pass1, String pass2, String code) async {
