@@ -15,6 +15,7 @@ class SplashPage extends StatelessWidget {
 
   checkAuth(context) async {
     await SharedPref.init();
+    print(SharedPref.getToken());
     if (SharedPref.getToken().isEmpty) {
       MRoute.replace(context, AuthPage());
     } else {
