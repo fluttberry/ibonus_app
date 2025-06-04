@@ -29,14 +29,14 @@ class CityModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['total_count'] = this.totalCount;
-    data['count'] = this.count;
-    data['total_pages'] = this.totalPages;
-    data['next'] = this.next;
-    data['previous'] = this.previous;
-    if (this.results != null) {
-      data['results'] = this.results!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total_count'] = totalCount;
+    data['count'] = count;
+    data['total_pages'] = totalPages;
+    data['next'] = next;
+    data['previous'] = previous;
+    if (results != null) {
+      data['results'] = results!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -54,21 +54,21 @@ class CityResults {
   CityResults.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     region =
-        json['region'] != null ? new Region.fromJson(json['region']) : null;
+        json['region'] != null ? Region.fromJson(json['region']) : null;
     name = json['name'];
     longitude = json['longitude'];
     latitude = json['latitude'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    if (this.region != null) {
-      data['region'] = this.region!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    if (region != null) {
+      data['region'] = region!.toJson();
     }
-    data['name'] = this.name;
-    data['longitude'] = this.longitude;
-    data['latitude'] = this.latitude;
+    data['name'] = name;
+    data['longitude'] = longitude;
+    data['latitude'] = latitude;
     return data;
   }
 }
@@ -83,17 +83,17 @@ class Region {
   Region.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     country =
-        json['country'] != null ? new Country.fromJson(json['country']) : null;
+        json['country'] != null ? Country.fromJson(json['country']) : null;
     name = json['name'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    if (this.country != null) {
-      data['country'] = this.country!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    if (country != null) {
+      data['country'] = country!.toJson();
     }
-    data['name'] = this.name;
+    data['name'] = name;
     return data;
   }
 }
@@ -124,13 +124,13 @@ class Country {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['alpha2_code'] = this.alpha2Code;
-    data['alpha3_code'] = this.alpha3Code;
-    data['longitude'] = this.longitude;
-    data['latitude'] = this.latitude;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['alpha2_code'] = alpha2Code;
+    data['alpha3_code'] = alpha3Code;
+    data['longitude'] = longitude;
+    data['latitude'] = latitude;
     return data;
   }
 }

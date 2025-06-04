@@ -2,8 +2,8 @@ class StoreModel {
   int? totalCount;
   int? count;
   int? totalPages;
-  Null? next;
-  Null? previous;
+  Null next;
+  Null previous;
   List<Results>? results;
 
   StoreModel(
@@ -23,20 +23,20 @@ class StoreModel {
     if (json['results'] != null) {
       results = <Results>[];
       json['results'].forEach((v) {
-        results!.add(new Results.fromJson(v));
+        results!.add(Results.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['total_count'] = this.totalCount;
-    data['count'] = this.count;
-    data['total_pages'] = this.totalPages;
-    data['next'] = this.next;
-    data['previous'] = this.previous;
-    if (this.results != null) {
-      data['results'] = this.results!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total_count'] = totalCount;
+    data['count'] = count;
+    data['total_pages'] = totalPages;
+    data['next'] = next;
+    data['previous'] = previous;
+    if (results != null) {
+      data['results'] = results!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -103,13 +103,13 @@ class Results {
     if (json['advantages'] != null) {
       advantages = <Advantages>[];
       json['advantages'].forEach((v) {
-        advantages!.add(new Advantages.fromJson(v));
+        advantages!.add(Advantages.fromJson(v));
       });
     }
     
     country =
-        json['country'] != null ? new Country.fromJson(json['country']) : null;
-    city = json['city'] != null ? new City.fromJson(json['city']) : null;
+        json['country'] != null ? Country.fromJson(json['country']) : null;
+    city = json['city'] != null ? City.fromJson(json['city']) : null;
     thumbnailAnnouncementPhoto = json['thumbnail_announcement_photo'];
     mediumAnnouncementPhoto = json['medium_announcement_photo'];
     createdAt = json['created_at'];
@@ -134,39 +134,39 @@ class Results {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    if (this.advantages != null) {
-      data['advantages'] = this.advantages!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    if (advantages != null) {
+      data['advantages'] = advantages!.map((v) => v.toJson()).toList();
     }
    
-    if (this.country != null) {
-      data['country'] = this.country!.toJson();
+    if (country != null) {
+      data['country'] = country!.toJson();
     }
-    if (this.city != null) {
-      data['city'] = this.city!.toJson();
+    if (city != null) {
+      data['city'] = city!.toJson();
     }
-    data['thumbnail_announcement_photo'] = this.thumbnailAnnouncementPhoto;
-    data['medium_announcement_photo'] = this.mediumAnnouncementPhoto;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['name'] = this.name;
-    data['address'] = this.address;
-    data['store_uuid'] = this.storeUuid;
-    data['type_of_bonus_system'] = this.typeOfBonusSystem;
-    data['cashback_percent'] = this.cashbackPercent;
-    data['interest_rate'] = this.interestRate;
-    data['type'] = this.type;
-    data['whatsapp'] = this.whatsapp;
-    data['telegram'] = this.telegram;
-    data['instagram'] = this.instagram;
-    data['is_main'] = this.isMain;
-    data['logo'] = this.logo;
-    data['bonuses_for_joining'] = this.bonusesForJoining;
-    data['in_announcement'] = this.inAnnouncement;
-    data['announcement_photo'] = this.announcementPhoto;
-    data['user'] = this.user;
-    data['main_store'] = this.mainStore;
+    data['thumbnail_announcement_photo'] = thumbnailAnnouncementPhoto;
+    data['medium_announcement_photo'] = mediumAnnouncementPhoto;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['name'] = name;
+    data['address'] = address;
+    data['store_uuid'] = storeUuid;
+    data['type_of_bonus_system'] = typeOfBonusSystem;
+    data['cashback_percent'] = cashbackPercent;
+    data['interest_rate'] = interestRate;
+    data['type'] = type;
+    data['whatsapp'] = whatsapp;
+    data['telegram'] = telegram;
+    data['instagram'] = instagram;
+    data['is_main'] = isMain;
+    data['logo'] = logo;
+    data['bonuses_for_joining'] = bonusesForJoining;
+    data['in_announcement'] = inAnnouncement;
+    data['announcement_photo'] = announcementPhoto;
+    data['user'] = user;
+    data['main_store'] = mainStore;
     return data;
   }
 }
@@ -185,10 +185,10 @@ class Advantages {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['description'] = this.description;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['description'] = description;
     return data;
   }
 }
@@ -219,13 +219,13 @@ class Country {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['alpha2_code'] = this.alpha2Code;
-    data['alpha3_code'] = this.alpha3Code;
-    data['longitude'] = this.longitude;
-    data['latitude'] = this.latitude;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['alpha2_code'] = alpha2Code;
+    data['alpha3_code'] = alpha3Code;
+    data['longitude'] = longitude;
+    data['latitude'] = latitude;
     return data;
   }
 }
@@ -248,12 +248,12 @@ class City {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['longitude'] = this.longitude;
-    data['latitude'] = this.latitude;
-    data['region'] = this.region;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['longitude'] = longitude;
+    data['latitude'] = latitude;
+    data['region'] = region;
     return data;
   }
 }
