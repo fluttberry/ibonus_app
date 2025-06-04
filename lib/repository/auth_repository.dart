@@ -25,10 +25,7 @@ class AuthRepository {
     return response.statusCode == 201 || response.statusCode == 200;
   }
 
-  void hello()async{
-await Future.delayed(Duration(seconds: 2));
-
-  }
+ 
 
 Future<bool> registerPassword(String password, String passwordConfirm, String sms) async {
     http.Response response = await http.post(
@@ -49,14 +46,14 @@ Future<bool> registerPassword(String password, String passwordConfirm, String sm
     return false;
   }
 
-  Future<bool> verify(String pass1, String pass2, String code) async {
-    http.Response response = await http.post(
-      Uri.parse(
-        'https://back.ibonus.app/api/v1/accounts/send/verify-code/$code',
-      ),
-      body: {'password': pass1, 'password_confirm': pass2},
-      headers: {'Content-type': 'application/json'},
-    );
-    return response.statusCode == 201 || response.statusCode == 200;
-  }
+  // Future<bool> verify(String pass1, String pass2, String code) async {
+  //   http.Response response = await http.post(
+  //     Uri.parse(
+  //       'https://back.ibonus.app/api/v1/accounts/send/verify-code/$code',
+  //     ),
+  //     body: {'password': pass1, 'password_confirm': pass2},
+  //     headers: {'Content-type': 'application/json'},
+  //   );
+  //   return response.statusCode == 201 || response.statusCode == 200;
+  // }
 }

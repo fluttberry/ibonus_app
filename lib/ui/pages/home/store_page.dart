@@ -8,9 +8,7 @@ class StorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
-      builder: (context, state) {
-        return BlocBuilder<StoreBloc, StoreState>(
+    return BlocBuilder<StoreBloc, StoreState>(
           builder: (context, state) {
             if (state.storeModel != null) {
               return GridView.builder(
@@ -31,7 +29,6 @@ class StorePage extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           },
         );
-      },
-    );
+      
   }
 }
