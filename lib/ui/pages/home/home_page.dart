@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: index, children: [StorePage(), ProfilePage()]),
+      body: SafeArea(child: IndexedStack(index: index, children: [StorePage(), ProfilePage()])),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (i) {
          setState(() {

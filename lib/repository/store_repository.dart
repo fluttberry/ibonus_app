@@ -7,7 +7,7 @@ import 'package:ibonus_app/model/store_model.dart';
 class StoreRepository {
   Future<StoreModel?> get(String? search, List <String>? type) async {
     var response = await http.get(
-      Uri.parse('https://back.ibonus.app/api/v1/stores/'),
+      Uri.parse('https://back.ibonus.app/api/v1/stores/?search=$search'),
       headers: {'Authorization': 'token ${SharedPref.getToken()}'},
     );
 
