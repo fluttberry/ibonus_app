@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ibonus_app/bloc/store/store_bloc.dart';
 import 'package:ibonus_app/bloc/store/store_event.dart';
 import 'package:ibonus_app/bloc/store/store_state.dart';
+import 'package:ibonus_app/ui/widget/filter_bottom_sheet.dart';
 import 'package:ibonus_app/ui/widget/text_field.dart';
 
 class StorePage extends StatelessWidget {
@@ -15,9 +16,15 @@ class StorePage extends StatelessWidget {
         Row(
           children: [
             Expanded(child: MTextField(dark: true, onSubmitted: (search) {
-              context.read<StoreBloc>().add(StoreGetEvent(search: search));
+              context.read<StoreBloc>().add(StoreGetEvent(search: search, type: ['STORE']));
             },)),
             InkWell(
+              onTap: () {
+                showModalBottomSheet(context: context, builder: (context){
+                  // context.read<StoreBloc>().add(StoreGetEvent());
+                  return FilterBottomSheet();
+                });
+              },
               child: Container(
                 padding: EdgeInsets.all(12),
                 child: Icon(Icons.menu_rounded),

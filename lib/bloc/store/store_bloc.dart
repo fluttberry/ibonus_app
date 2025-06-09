@@ -9,9 +9,11 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
   }
   StoreRepository storeRepository = StoreRepository();
   _getStores(StoreGetEvent event, emit) async {
-    state.storeModel = null;
-    emit (state);
-    state.storeModel = await storeRepository.get(event.search, event.type);
-    emit(state);
+    emit(StoreState(storeModel: null));
+    emit(
+      StoreState(
+        storeModel: await storeRepository.get(event.search, event.type),
+      ),
+    );
   }
 }
