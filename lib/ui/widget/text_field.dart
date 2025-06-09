@@ -5,18 +5,19 @@ class MTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hint;
   final TextInputType? textInputType;
-  const MTextField({super.key, this.controller, this.hint, this.textInputType});
+  final bool dark;
+  const MTextField({super.key, this.controller, this.hint, this.textInputType, this.dark = false});
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white),
+        border: Border.all(color: dark ? Colors.black: Colors.white),
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
         keyboardType: textInputType,
         controller: controller,
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: dark? Colors.black: Colors.white),
         decoration: InputDecoration(hintText: hint, border: InputBorder.none),
       ),
     );

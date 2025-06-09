@@ -56,15 +56,15 @@ class Results {
   String? address;
   String? storeUuid;
   String? typeOfBonusSystem;
-  int? cashbackPercent;
-  int? interestRate;
+  double? cashbackPercent;
+  double? interestRate;
   String? type;
   String? whatsapp;
   String? telegram;
   String? instagram;
   bool? isMain;
   String? logo;
-  int? bonusesForJoining;
+  double? bonusesForJoining;
   bool? inAnnouncement;
   String? announcementPhoto;
   int? user;

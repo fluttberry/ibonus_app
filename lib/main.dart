@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
     return  MultiBlocProvider(providers: [
           BlocProvider(create: (context) => AuthBloc()),
           BlocProvider(create: (context) => StoreBloc()),
-        ], child: MaterialApp(
+        ], child: MaterialApp(debugShowCheckedModeBanner: false,
       home: SplashPage()
     )); 
   }
