@@ -1,19 +1,114 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ibonus_app/bloc/store/store_bloc.dart';
+import 'package:ibonus_app/bloc/store/store_event.dart';
+import 'package:ibonus_app/ui/widget/button.dart';
+import 'package:ibonus_app/utils/route.dart';
 
-class FilterBottomSheet extends StatefulWidget{
+class FilterBottomSheet extends StatefulWidget {
   const FilterBottomSheet({super.key});
 
   @override
   State<StatefulWidget> createState() {
-
-    return _FilterBottomSheetState (); 
+    return _FilterBottomSheetState();
   }
 }
 
 class _FilterBottomSheetState extends State<FilterBottomSheet> {
+  bool all = true;
+  bool cafe = false;
+  bool restaraunt = false;
+  bool store = false;
+  bool service = false;
   @override
   Widget build(BuildContext context) {
-return Container();
-
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text('Все'),
+              Checkbox(
+                value: all,
+                onChanged: (v) {
+                  setState(() {
+                    all = !all;
+                  });
+                },
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text('Кофейня и бары'),
+              Checkbox(
+                value: cafe,
+                onChanged: (v) {
+                  setState(() {
+                    cafe = !cafe;
+                  });
+                },
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text('Рестораны и кафе'),
+              Checkbox(
+                value: restaraunt,
+                onChanged: (v) {
+                  setState(() {
+                    restaraunt = !restaraunt;
+                  });
+                },
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text('Магазины'),
+              Checkbox(
+                value: store,
+                onChanged: (v) {
+                  setState(() {
+                    store = !store;
+                  });
+                },
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text('Услуги'),
+              Checkbox(
+                value: service,
+                onChanged: (v) {
+                  setState(() {
+                    service = !service;
+                  });
+                },
+              ),
+            ],
+          ),
+          MButton(onTap: (){
+            List <String> type = [];
+            if (cafe){
+              type.add('CAFE');
+            }
+            if (restaraunt){
+              type.add('RESTAURANT');
+            }
+            if (store){
+              type.add('STORE');
+            }
+            if (all){
+              type.clear();
+            }
+            context.read<StoreBloc>().add(StoreGetEvent(type: type));
+            MRoute.pop(context);
+          }, text: 'Применить')
+        ],
+      ),
+    );
   }
 }
