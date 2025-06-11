@@ -15,15 +15,25 @@ class StorePage extends StatelessWidget {
       children: [
         Row(
           children: [
-            Expanded(child: MTextField(dark: true, onSubmitted: (search) {
-              context.read<StoreBloc>().add(StoreGetEvent(search: search, type: ['STORE']));
-            },)),
+            Expanded(
+              child: MTextField(
+                dark: true,
+                onSubmitted: (search) {
+                  context.read<StoreBloc>().add(
+                    StoreGetEvent(search: search, type: ['STORE']),
+                  );
+                },
+              ),
+            ),
             InkWell(
               onTap: () {
-                showModalBottomSheet(context: context, builder: (context){
-                  // context.read<StoreBloc>().add(StoreGetEvent());
-                  return FilterBottomSheet();
-                });
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    // context.read<StoreBloc>().add(StoreGetEvent());
+                    return FilterBottomSheet();
+                  },
+                );
               },
               child: Container(
                 padding: EdgeInsets.all(12),
